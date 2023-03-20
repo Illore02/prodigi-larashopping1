@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
 
-class CategoryController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view ('categories.show', compact ('categories'));
+        $products = Product::orderBy('price', 'asc')->limit(3)->get();
+        return view ('home.index', compact ('products'), compact('categories'));
     }
 
     /**
@@ -35,18 +37,15 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(string $id)
     {
-        $categories = Category::all();
-        $products = DB::table('products')->where('category_id', $category->id) ->get();
-        return view ('categories.show', compact ("products", "categories"));
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(string $id)
     {
         //
     }
@@ -54,7 +53,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -62,7 +61,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(string $id)
     {
         //
     }

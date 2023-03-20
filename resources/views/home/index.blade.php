@@ -1,45 +1,25 @@
 @extends ('layouts.app')
 
 
-@section ('head_title', 'Lista post')
+@section ('head_title', 'HomePage')
+
+
 
 @section ('content')
+    <h1 style="text-align: center">HomePage</h1>
 
-<h1>
-    Lista post
-</h1>
-<div class="mb-3">
-<a href="{{route('posts.create')}}"class="btn btn-primary">Aggiungi post</a>
-</div>
-@if (session('message') )
-    <div class="alert alert-success" role="alert">
-        {{session('message')}}
+    <div class= "container row col-12"; style="text-align: center">
+        @foreach ($products as $index =>$product)
+        <div class="card col-3 m-3" style="width:18rem;">
+            <img src={{$product->image}} class="card-img-top" alt="">
+            <div class="card-body">
+            <h5 class="card-title">{{$product->title}}</h5>
+            <p class="card-text">{{$product->description}}</p>
+            <h3 class="card-text">{{$product->price}}</h3>
+            <p class="card-text"></p>
+            <a href="#" class="btn btn-primary">Acquista ora</a>
+        </div>  
+        </div> 
+        @endforeach
     </div>
-@endif
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome post</th>
-      <th scope="col">Categoria post</th>
-    </tr>
-  </thead>
-    <tbody>
-      @foreach ($posts as $index => $posts)
-      <tr>
-        <th>{{$index+1}}</th>
-        <td>{{$posts ->title}}</td>
-        <td><a href="{{route('categories.show',$posts->category)}}" class="btn">{{$posts->category->name }}</a></td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-
-  <script>
-  $('.confirm_delete').click(e=>{
-      if (!confirm ('Sei sicuro di cancellare?')){
-        e.preventDefault();
-      }
-    });
-  </script>
 @endsection
