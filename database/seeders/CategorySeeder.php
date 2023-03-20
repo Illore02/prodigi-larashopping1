@@ -30,6 +30,7 @@ class CategorySeeder extends Seeder
         foreach ($this->categories as $category)
         {
             Category::create([
+                "id" => $category['id'],
                 "name" => $category['name']
             ]);
         }
