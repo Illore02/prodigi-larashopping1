@@ -17,7 +17,7 @@
             <p class="card-text">{{$product->description}}</p>
             <h3 class="card-text">{{$product->price}}</h3>
             <p class="card-text"></p>
-            <a href="#" class="btn btn-primary">Acquista ora</a>
+            <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
         </div>  
         </div> 
         @endforeach
