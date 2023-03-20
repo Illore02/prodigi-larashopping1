@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ route('categories.index') }}">LaraShopping</a>
+    <a class="navbar-brand" href="{{ route('home.index') }}">LaraShopping</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,7 +11,7 @@
         </li>
         @foreach ($categories as $index => $category)
           <li class="nav-item">
-            <a class="nav-link" href="{{route('home.index',$category)}}">{{$category->name}}</a>
+            <a class="nav-link" href="{{route('categories.show',$category)}}">{{$category->name}}</a>
           </li>
         @endforeach
       </ul>
